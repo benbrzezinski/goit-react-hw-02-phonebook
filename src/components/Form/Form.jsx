@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const Form = ({ name, nameId, onHandleSubmit, onHandleChange }) => (
   <form className="form" onSubmit={onHandleSubmit}>
