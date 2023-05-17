@@ -6,6 +6,8 @@ import Contacts from './Contacts/Contacts';
 
 const INITIAL_STATE = {
   name: '',
+  number: '',
+  filter: '',
   contacts: [],
 };
 
@@ -15,38 +17,48 @@ class App extends Component {
   };
 
   nameInputId = nanoid();
+  numberInputId = nanoid();
 
   handleChange = e => {
-    const { name, value } = e.target;
+    const { name, value } = e.currentTarget;
     this.setState(() => ({ [name]: value }));
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const { name } = this.state;
+    const { name, number } = this.state;
 
     const newContact = {
-      name: name,
       id: nanoid(),
+      name,
+      number,
     };
 
     this.setState(({ contacts }) => ({
+      name: '',
+      number: '',
       contacts: [...contacts, newContact],
     }));
   };
 
   render() {
-    const { name, contacts } = this.state;
+    const { name, number, filter, contacts } = this.state;
 
     return (
       <Section>
         <Form
           name={name}
           nameInputId={this.nameInputId}
+          number={number}
+          numberInputId={this.numberInputId}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
-        <Contacts contacts={contacts} />
+        <Contacts
+          filter={filter}
+          contacts={contacts}
+          handleChange={this.handleChange}
+        />
       </Section>
     );
   }
