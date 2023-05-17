@@ -10,19 +10,15 @@ const INITIAL_STATE = {
 };
 
 class App extends Component {
-  nameId = nanoid();
-
   state = {
     ...INITIAL_STATE,
   };
 
-  reset = () => {
-    this.setState({ ...INITIAL_STATE });
-  };
+  nameInputId = nanoid();
 
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState(() => ({ [name]: value }));
   };
 
   handleSubmit = e => {
@@ -34,25 +30,23 @@ class App extends Component {
       id: nanoid(),
     };
 
-    this.setState(state => ({
-      contacts: [...state.contacts, newContact],
+    this.setState(({ contacts }) => ({
+      contacts: [...contacts, newContact],
     }));
-
-    this.reset();
   };
 
   render() {
     const { name, contacts } = this.state;
 
     return (
-      <Section title={'Phonebook'}>
+      <Section>
         <Form
           name={name}
-          nameId={this.nameId}
-          onHandleSubmit={this.handleSubmit}
-          onHandleChange={this.handleChange}
+          nameInputId={this.nameInputId}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
         />
-        <Contacts title={'Contacts'} contacts={contacts} />
+        <Contacts contacts={contacts} />
       </Section>
     );
   }

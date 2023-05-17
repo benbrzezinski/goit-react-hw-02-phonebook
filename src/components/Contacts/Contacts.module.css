@@ -1,0 +1,17 @@
+.contactsTitle {
+  margin-bottom: 15px;
+}
+
+.contacts {
+  list-style-type: disclosure-closed;
+  padding-left: 40px;
+}
+
+.contactsItem {
+  margin-bottom: 5px;
+}
+
+.contactsInfo {
+  font-size: 18px;
+  padding-left: 20px;
+}
