@@ -4,7 +4,7 @@ import Filter from 'components/Filter/Filter';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
 import Notification from 'components/Notification/Notification';
 
-const Contacts = ({ title = 'Contacts', filter, contacts, handleChange }) => {
+const Contacts = ({ title = 'Contacts', filter, contacts, setFilter }) => {
   const filteredContacts = contacts.filter(({ name }) =>
     name.toLowerCase().trim().startsWith(filter.toLowerCase().trim())
   );
@@ -14,7 +14,7 @@ const Contacts = ({ title = 'Contacts', filter, contacts, handleChange }) => {
       <h2 className={css.title}>{title}</h2>
       {contacts.length > 0 ? (
         <>
-          <Filter filter={filter} handleChange={handleChange} />
+          <Filter filter={filter} setFilter={setFilter} />
           <ul className={css.contacts}>
             {!filter.trim() ? (
               <ContactsItem contacts={contacts} />
@@ -36,7 +36,7 @@ Contacts.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.objectOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
-  handleChange: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired,
 };
 
 export default Contacts;
