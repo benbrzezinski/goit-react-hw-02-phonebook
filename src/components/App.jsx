@@ -10,14 +10,23 @@ class App extends Component {
   };
 
   setFilter = e => {
-    const { value } = e.currentTarget;
-    this.setState(() => ({ filter: value }));
+    const { name, value } = e.currentTarget;
+    this.setState(() => ({ [name]: value }));
   };
 
   setContact = newContact => {
     this.setState(({ contacts }) => ({
       contacts: [...contacts, newContact],
     }));
+  };
+
+  deleteContact = e => {
+    const deletedId = e.currentTarget.dataset.id;
+
+    this.setState(({ contacts }) => {
+      const filteredContacts = contacts.filter(({ id }) => id !== deletedId);
+      return { contacts: filteredContacts };
+    });
   };
 
   render() {
@@ -30,6 +39,7 @@ class App extends Component {
           filter={filter}
           contacts={contacts}
           setFilter={this.setFilter}
+          deleteContact={this.deleteContact}
         />
       </Section>
     );

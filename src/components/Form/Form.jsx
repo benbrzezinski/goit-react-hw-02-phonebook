@@ -30,8 +30,11 @@ class Form extends Component {
 
     if (contactsNames.includes(name)) {
       return Notify.failure(`${name} is already in contacts!`, {
-        position: 'center-top',
-        distance: '50px',
+        position: 'left-top',
+        distance: '45px',
+        clickToClose: true,
+        fontSize: '14px',
+        cssAnimationStyle: 'from-top',
       });
     }
 

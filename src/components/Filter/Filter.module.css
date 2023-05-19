@@ -8,6 +8,7 @@
 }
 
 .text {
+  font-weight: var(--font-weight);
   padding-left: 2px;
   margin-bottom: 4px;
 }

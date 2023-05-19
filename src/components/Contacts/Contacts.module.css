@@ -3,6 +3,14 @@
 }
 
 .contacts {
-  list-style-type: disclosure-closed;
-  padding-left: 40px;
+  padding-left: 35px;
+}
+
+@media screen and (min-width: 401px) {
+  .contacts {
+    display: flex;
+    column-gap: 35px;
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
 }
