@@ -5,11 +5,11 @@ const ContactsItem = ({ contacts, deleteContact }) =>
   contacts.map(({ id, name, number }) => (
     <li className={css.item} key={id}>
       <span className={css.icon}></span>
-      <p>
+      <p className={css.text}>
         <span className={css.name}>Name: </span>
-        {name.length > 30 ? name.slice(0, 25) + '...' : name}
+        {name}
       </p>
-      <p>
+      <p className={css.text}>
         <span className={css.tel}>Tel: </span>
         {number}
       </p>

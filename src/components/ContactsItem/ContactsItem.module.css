@@ -24,6 +24,14 @@
   background-size: 20px;
 }
 
+.text {
+  width: 265px;
+  height: 20px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
 .name,
 .tel {
   font-weight: var(--font-weight);

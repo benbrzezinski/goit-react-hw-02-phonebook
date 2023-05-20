@@ -5,13 +5,7 @@ import Contacts from './Contacts/Contacts';
 
 class App extends Component {
   state = {
-    filter: '',
     contacts: [],
-  };
-
-  setFilter = e => {
-    const { name, value } = e.currentTarget;
-    this.setState(() => ({ [name]: value }));
   };
 
   setContact = newContact => {
@@ -30,17 +24,12 @@ class App extends Component {
   };
 
   render() {
-    const { filter, contacts } = this.state;
+    const { contacts } = this.state;
 
     return (
       <Section>
         <Form contacts={contacts} setContact={this.setContact} />
-        <Contacts
-          filter={filter}
-          contacts={contacts}
-          setFilter={this.setFilter}
-          deleteContact={this.deleteContact}
-        />
+        <Contacts contacts={contacts} deleteContact={this.deleteContact} />
       </Section>
     );
   }
